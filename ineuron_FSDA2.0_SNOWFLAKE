@@ -2,7 +2,7 @@
 
 Use database DEMODATABASE;
 
-Create or replace table Sales_data(
+Create or replace table SS_Sales_data(
   order_id varchar(20),
   order_date DATE,
   ship_date DATE,
@@ -27,50 +27,50 @@ Create or replace table Sales_data(
 );
 
 ---1 .SET PRIMARY KEY.------------------------------------------
-ALTER TABLE SS_sales_copy
+ALTER TABLE SS_Sales_data
 ADD CONSTRAINT order_id_uni PRIMARY KEY(order_id);
 
 ---2. Change the Primary key to Order Id Column..----------------------------
 
-ALTER TABLE SS_sales_copy
+ALTER TABLE SS_Sales_data
 DROP PRIMARY KEY;
 
-ALTER TABLE SS_sales_copy
+ALTER TABLE SS_Sales_data
 ADD PRIMARY KEY(order_id);
 
 ---3. Check the data type for Order date and Ship date and mention in what data type it should be?--------
 
-Update SS_sales_copy
+Update SS_Sales_data
 SET order_date=CAST(order_date AS DATE);
 
-Update SS_sales_copy
+Update SS_Sales_data
 SET ship_date=TO_CHAR(DATE(ship_date,'DD-MM-YYYY'),'YYYY-MM-DD');
 
 
 ---4. Create a new column called order_extract and extract the number after the last‘–‘from Order ID column.-------
 
 Select *,
-split_part(order_id,'-',-1) as new_orderid from SS_sales_copy;
+split_part(order_id,'-',-1) as new_orderid from SS_Sales_data;
 
 ---5. Create a new column called Discount Flag and categorize it based on discount.Use ‘Yes’ if the discount is greater than zero else ‘No’.
-CREATE OR REPLACE TABLE SS_sales_copy AS
+CREATE OR REPLACE TABLE SS_Sales_data AS
 SELECT *,
       CASE
         WHEN discount>0 THEN 'Yes'
         ELSE 'NO'
       END AS DISCOUNT_FLAG
-FROM SS_sales_copy;
+FROM SS_Sales_data;
 
 ---6. Create a new column called process days and calculate how many days it takes for each order id to process from the order to its shipment.
 
-CREATE OR REPLACE TABLE SS_sales_copy AS
+CREATE OR REPLACE TABLE SS_Sales_data AS
 SELECT*,
 DATEDIFF('days',order_date,ship_date) as Process_days
-FROM SS_sales_copy;
+FROM SS_Sales_data;
 
 ---7. FLAG THE PROCESS DAY AS BY RATING IF IT TAKES LESS OR EQUAL 3  DAYS MAKE 5,LESS OR EQUAL THAN 6 DAYS BUT MORE THAN 3 MAKE 4,LESS THAN 10 BUT MORE THAN 6 MAKE 3,MORE THAN 10 MAKE IT 2 FOR EVERY ORDER ID
 
-CREATE OR REPLACE TABLE SS_sales_copy AS
+CREATE OR REPLACE TABLE SS_Sales_data AS
 SELECT*, 
     CASE
        WHEN Process_days <=3 THEN 5
@@ -78,7 +78,7 @@ SELECT*,
        WHEN Process_days BETWEEN 7 AND 10 THEN 3
        ELSE 2
      END AS RATING
-FROM SS_sales_copy;
+FROM SS_Sales_data;
 
 
 
