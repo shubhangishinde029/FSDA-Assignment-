@@ -1,1 +1,47 @@
+Advance Excel Assignment 1
 
+1. What do you mean by cells in an excel sheet?
+- A cell is a location at the intersection of the particular row and coloumn. Cells refers to the individual rectangular boxes or units within a worksheet grid. Each cell is indetified by a unique combination of column letter and a row number. Cells are the fundamental building blocks of an excel spreadsheet and are used to store and manipulate data.
+ 
+2. How can you restrict someone from copying a cell from your worksheet?
+-In excel you can restrict someone from copying a call or a range of cells from yourworksheet by applying cell protection.
+   1. Select the cell that you want to protect.
+   2. Right-click on selected cell and choose "Format Cells"
+  3. In the format cells dialog box, go to the "Protection" tab.
+  4. Uncheck the "Locked" option. By defauly, all cells are locked.
+  5. Clicked OK to choose the dialog box.
+
+3. How to move or copy the worksheet into another workbook?
+-To move or copy a worksheet into another workbook in excel, you can follow these steps:
+ 1. Open both the source workbook which containing the worksheet you want to move or copy and destination workbook which you want to move or copy the worksheet.
+2.In the source workbook, right-click on the worksheet tab at the bottom of the Excel window. 
+3. From that choose either "Move or copy" or "Copy" depending on whether you want to move or copy the worksheet.
+4.If you choose "Move or copy" in the dialog box,select the destination workbook from the "To book" dropdown list.
+5.Choose the position where you want to place the worksheet within the destination workbook. You can select an existing worksheet to insert befor or after,or you can choose to create a new workbook.
+6. If you want to create a copy of the worksheet,check the "Create a copy" checkbox.
+7. Click OK to move or copy the worksheet.
+Make sure to save both workbooks after performing the move or copy operation.
+
+4. Which key is used as a shortcut for opening a new window document?
+- Ctrl + N
+ By pressing the Ctrk key on your keyboard and holding it down,simultaneouss the letter "N" key. It allows you to start working on a fresh document  without closing the existing one.
+
+5. What are the things that we can notice after opening the Excel interface?
+- After opening the Excel interface, there are several elements and features that you can notice, Here are some of them:
+ 1. Ribbon: The Ribbon is located at the top page of excel window and contains tabs, each with related groups of commands. It provides access to various features and funactions in excel,such as formatting, formulas,data manipulation and more.
+2. Worksheet: The main area if the excel interface is occupied by the worksheet, which is grid of cells. Each cell us identified by unique combination of a column letter and a row number. Where you can enter and manipulate data,perform calculations and organize your information.
+3. Column Letters and Row Numbers: The columns are labeled with letters and rows are numbered. These labels help you referece specific cells or ranges of cells within the worksheet.
+4. Formula Bar : The formula bar is located above the worksheet grid and displays the contents of the selected cell. It is also where you can enter or edit formulas,funcations or data for selected cell.
+5.Name box: The Name Box is situated next to the formula bar and displays the cell reference if the active cell or the named range if applicable.
+6.Quick Access Toolbar: The quick access toolbar is located above the Ribbon and provides quick access to frequently used commands,such as Save, Undo,Redo,and more.
+7.Status Bar: The Status bar appears at the bottom of the excel window and displays information about the current status of the worksheet,such as calculation mode,zoom level, and various Excel features.
+ 
+
+
+6. When to use a relative cell reference in excel?
+Relative cell references in excel are used when you want to reference to adjust or change relative to the location where the formula or function is copied or filled.
+There are some senario when relative cell references are commonly used:
+1. Copying formulas : When you want to copy a formula to multiple cells, and you want the formula to adjust its cell references based on the relative position of the new location 
+2. Filling series: When you want to fill a series of value or patten in adjacent cells.
+3. Replicating pattern or formatting: When you want to replicate a pattern or formatting across multiple cells or ranges. Relative reference allow you to copy or fill a cell with a specific formatting style.
+4.Data entry or calculations: When you want to perform calculations or data entry that depend on the values in nearby cells.
