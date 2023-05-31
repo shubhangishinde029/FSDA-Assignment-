@@ -1,1 +1,156 @@
+-------------------------------------------TASK 1------------------------------------------------------------------------------------
 
+Create database PRACTICE_WAREHOUSE;
+
+use PRACTICE_WAREHOUSE;
+
+Create or replace table Shopping_History(
+  Product Varchar(20) PRIMARY KEY,
+  Quantity INT NOT NULL,
+  Unit_price INT NOT NULL
+);
+
+Insert into Shopping_History values('Milk',3, 10),
+                                   ('Bread',7, 3),
+                                   ('Bread',5, 2);
+                                   
+select * from Shopping_History;
+
+SELECT Product, SUM(Quantity * Unit_price) AS Total_price
+FROM Shopping_History
+GROUP BY Product;
+
+
+
+--------------------------------------------TASK 02--------------------------------------------------------------------------------------
+
+
+Create or replace table Phone(
+  Name varchar(20) NOT NULL,
+  Phone_number INT NOT NULL
+);
+
+INSERT INTO Phone Values('Jack',1234),
+                              ('Lena',3333),
+                              ('Mark',9999),
+                              ('Anna',7582);
+
+Select * from Phone;
+
+Create or replace table Calls(
+  ID INT NOT NULL,
+  Caller INT NOT NULL,
+  Callee INT NOT NULL,
+  Duration INT NOT NULL,
+  Unique(ID)
+);
+
+Insert into Calls values(25,1234,7582,8),
+                        (7,9999,7582,1),
+                        (18,9999,3333,4),
+                        (2,7582,3333,3),
+                        (3,3333,1234,1),
+                        (21,3333,1234,1);
+Select * from Calls;     
+
+
+SELECT p.NAME
+FROM PHONE p
+JOIN CALLS c ON p.PHONE_NUMBER = c.CALLER OR p.PHONE_NUMBER = c.CALLEE
+GROUP BY p.NAME
+HAVING SUM(c.DURATION) >= 10
+ORDER BY p.NAME Asc;
+
+-------------------------------Task 2.1-----------------------------------------------------------------------------------
+
+Create or replace table Phones_1(
+  Name varchar(20),
+  Phone_number INT
+);
+
+INSERT INTO Phones_1 values('John',6356),
+                         ('Addison',4315),
+                         ('Kate',8003),
+                         ('Ginny',9831);
+                         
+Create or replace table Calls_1(
+  Id INT,
+  Caller varchar(10),
+  Callee Varchar(10),
+  Duration varchar(20)
+);
+
+Insert into Calls_1 values(65, 8003, 9831, 7),
+                          (100,9831,8003,3),
+                          (145,4315,9831,18);
+                          
+                          
+SELECT P.Name 
+FROM Phones_1 P
+JOIN Calls_1 C ON P.Phone_number = C.Caller OR P.Phone_number = C.Callee
+GROUP BY P.Name
+HAVING SUM(C.Duration) >= 10
+ORDER BY P.Name ASC;
+
+------------------------------------------Task 3----------------------------------------------------------------------------------
+
+Create or replace table Transactions(
+   Amount INT NOT NULL,
+   date Date not Null
+);
+
+Insert into Transactions values(1000, '2020-01-06'),
+                               (-10,'2020-01-14'),
+                               (-75,'2020-01-20'),
+                               (-5,'2020-01-25'),
+                               (-4,'2020-01-29'),
+                               (2000,'2020-03-10'),
+                               (-75,'2020-03-12'),
+                               (-20,'2020-03-15'),
+                               (40,'2020-03-15'),
+                               (-50,'2020-03-17'),
+                               (200,'2020-10-10'),
+                               (-200,'2020-10-10');
+                               
+---- SUM(Amount) -- Will gives you total sum 
+
+select SUM(Amount) - (11*5) As Balance
+from Transactions;
+
+----------------------------------------Task 3.1------------------------------------------------------------------------------------
+Create or replace table Transactions_01(
+   Amount INT NOT NULL,
+   date Date not Null
+);
+
+Insert into Transactions_01 values(1,'2020-06-29'),
+                                  (35,'2020-02-20'),
+                                 (-50,'2020-02-03'),
+                                  (-1,'2020-02-26'),
+                                (-200,'2020-08-01'),
+                                 (-44,'2020-02-07'),
+                                  (-5,'2020-02-25'),
+                                   (1,'2020-06-29'),
+                                   (1,'2020-06-29'),
+                                (-100,'2020-12-29'),
+                                (-100,'2020-12-30'),
+                                (-100,'2020-12-31');
+
+select SUM(Amount)- (10*5) As balance
+from Transactions_01;
+
+-----------------------------------------------Task 3.2--------------------------------------------------------------------------
+Create or replace table Transactions_02 (
+  Amount INT,
+  date Date
+);
+
+Insert into Transactions_02 values(6000,'2020-04-03'),
+                                  (5000,'2020-04-02'),
+                                  (4000,'2020-04-01'),
+                                  (3000,'2020-03-01'),
+                                  (2000,'2020-02-01'),
+                                  (1000,'2020-01-01');
+                                  
+ Select sum(Amount) - (12*5) as balance
+ from Transactions_02;
